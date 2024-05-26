@@ -1,0 +1,7 @@
+make edf
+./edf edf-schedule_pri.txt
+
+se der erro:
+
+rm -rf *.o
+rm -rf edf

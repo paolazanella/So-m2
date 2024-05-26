@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build rr_p",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "rr_p"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "detail": "Tarefa gerada pelo usuário."
+        }
+    ]
+}

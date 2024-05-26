@@ -1,0 +1,8 @@
+
+make rr_p
+./rr_p rr-schedule_pri.txt
+
+se der erro:
+
+rm -rf *.o
+rm -rf rr_p
