@@ -57,6 +57,28 @@ Task *remove_next_task(int priority)
     return NULL;
 }
 
+void list_tasks_priority(int priority)
+{
+    printf("\n\n-- Inicializando prioridade %d --\n", priority);
+    Node *temp = queues[priority - 1];
+
+    if (temp != NULL)
+    {
+        printf("Tarefas com esta prioridade:\n");
+    }
+    else
+    {
+        printf("Nenhuma Tarefa com esta prioridade.\n");
+    }
+
+    while (temp != NULL)
+    {
+        printf("Tarefa [%s] [Prioridade: %d] [Burst: %d]\n", temp->task->name, temp->task->priority, temp->task->burst);
+        temp = temp->next;
+    }
+    printf("\n\n");
+}
+
 void *timer(void *arg)
 {
     while (1)
@@ -87,28 +109,6 @@ void *realtime_wakeup(void *arg)
         realtime_awake = 0;
         pthread_mutex_unlock(&mutex);
     }
-}
-
-void list_tasks_priority(int priority)
-{
-    printf("\n\n-- Inicializando prioridade %d --\n", priority);
-    Node *temp = queues[priority - 1];
-
-    if (temp != NULL)
-    {
-        printf("Tarefas com esta prioridade:\n");
-    }
-    else
-    {
-        printf("Nenhuma Tarefa com esta prioridade.\n");
-    }
-
-    while (temp != NULL)
-    {
-        printf("Tarefa [%s] [Prioridade: %d] [Burst: %d]\n", temp->task->name, temp->task->priority, temp->task->burst);
-        temp = temp->next;
-    }
-    printf("\n\n");
 }
 
 void schedule()

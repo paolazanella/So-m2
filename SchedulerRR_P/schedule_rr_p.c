@@ -55,16 +55,6 @@ Task *remove_next_task(int priority)
     return NULL;
 }
 
-void *timer(void *arg)
-{
-    while (1)
-    {
-        sleep(1);
-        global_time++;
-        pthread_cond_signal(&timer_expired);
-    }
-}
-
 void list_tasks_priority(int priority)
 {
     printf("\n\n-- Inicializando prioridade %d --\n", priority);
@@ -85,6 +75,16 @@ void list_tasks_priority(int priority)
         temp = temp->next;
     }
     printf("\n\n");
+}
+
+void *timer(void *arg)
+{
+    while (1)
+    {
+        sleep(1);
+        global_time++;
+        pthread_cond_signal(&timer_expired);
+    }
 }
 
 void schedule()
